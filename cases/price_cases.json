@@ -1,0 +1,81 @@
+[
+  {
+    "name": "single item without coupon",
+    "input": {
+      "items": [
+        {
+          "sku": "BOOK-001",
+          "quantity": 2,
+          "unit_price": "30.00"
+        }
+      ],
+      "tax_rate": "0.08"
+    },
+    "expected": {
+      "subtotal": "60.00",
+      "discount": "0.00",
+      "tax": "4.80",
+      "total": "64.80"
+    }
+  },
+  {
+    "name": "save10 coupon applies ten percent discount",
+    "input": {
+      "items": [
+        {
+          "sku": "KEYBOARD-001",
+          "quantity": 1,
+          "unit_price": "120.00"
+        }
+      ],
+      "coupon": "SAVE10",
+      "tax_rate": "0.08"
+    },
+    "expected": {
+      "subtotal": "120.00",
+      "discount": "12.00",
+      "tax": "8.64",
+      "total": "116.64"
+    }
+  },
+  {
+    "name": "save20 requires subtotal at least one hundred",
+    "input": {
+      "items": [
+        {
+          "sku": "MOUSE-001",
+          "quantity": 1,
+          "unit_price": "80.00"
+        }
+      ],
+      "coupon": "SAVE20",
+      "tax_rate": "0.08"
+    },
+    "expected": {
+      "subtotal": "80.00",
+      "discount": "0.00",
+      "tax": "6.40",
+      "total": "86.40"
+    }
+  },
+  {
+    "name": "minus5 coupon cannot exceed subtotal",
+    "input": {
+      "items": [
+        {
+          "sku": "STICKER-001",
+          "quantity": 1,
+          "unit_price": "3.00"
+        }
+      ],
+      "coupon": "MINUS5",
+      "tax_rate": "0.08"
+    },
+    "expected": {
+      "subtotal": "3.00",
+      "discount": "3.00",
+      "tax": "0.00",
+      "total": "0.00"
+    }
+  }
+]
